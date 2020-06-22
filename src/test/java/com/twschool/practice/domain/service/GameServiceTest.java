@@ -14,6 +14,10 @@ public class GameServiceTest {
         GuessNumberGame guessNumberGame  = Mockito.mock(GuessNumberGame.class);
         Mockito.when(gameRepository.find()).thenReturn(guessNumberGame);
         GameService gameService = new GameService(gameRepository);
+        gameService.guess("1 2 3 4");
+        Mockito.verify(gameRepository,Mockito.times(1)).find();
+        Mockito.verify(guessNumberGame,Mockito.times(1)).guess(Mockito.any());
+
 
     }
 }
